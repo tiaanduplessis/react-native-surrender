@@ -39,7 +39,9 @@ function runCommand () {
   const reset = `watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && ${packager} install`
   const cleanCache = `&& ${packager} cache clean${args.yarn ? '' : ' --force'}`
   const start = args.start ? `&& ${packager} start --reset-cache` : ''
-  const pods = args.pods ? `&& cd ios & rm -rf Pods Podfile.lock & pod install & cd ..` : ''
+  const pods = args.pods
+    ? `&& cd ios & rm -rf Pods Podfile.lock & pod install & cd ..`
+    : ''
   const android = args.android ? '&& cd android & gradlew clean & cd ..' : ''
   const cmd = `${reset} ${cleanCache} ${pods} ${android} ${start}`
   console.log(`Running command: ${cmd}`)

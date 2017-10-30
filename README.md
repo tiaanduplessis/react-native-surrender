@@ -89,6 +89,12 @@ Or start the packager
 $ surrender --start # watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && npm install && npm cache clean --force  && npm start --reset-cache
 ```
 
+Or clear and install pods
+
+```sh
+$ surrender --pods #  watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && npm install && npm cache clean --force && cd ios & rm -rf Pods Podfile.lock & pod install & cd ..
+```
+
 ## Contributing
 
 Contributions are welcome!

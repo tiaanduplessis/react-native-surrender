@@ -1,6 +1,6 @@
 {
   "name": "react-native-surrender",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "CLI script that clears Watchman, removes node_modules and cleans cache using npm or yarn",
   "license": "MIT",
   "repository": {

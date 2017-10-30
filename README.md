@@ -55,6 +55,8 @@
 
 ## Install
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tiaanduplessis/react-native-surrender.svg)](https://greenkeeper.io/)
+
 ```sh
 $ npm install -g react-native-surrender
 # OR

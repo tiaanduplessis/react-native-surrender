@@ -1,0 +1,36 @@
+{
+  "name": "react-native-surrender",
+  "version": "1.0.0",
+  "description": "CLI script that clears Watchman, removes node_modules and cleans cache using npm or yarn",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/tiaanduplessis/react-native-surrender",
+    "type": "git"
+  },
+  "homepage": "https://github.com/tiaanduplessis/react-native-surrender",
+  "bugs": "https://github.com/tiaanduplessis/react-native-surrender",
+  "main": "index.js",
+  "bin": {
+    "surrender": "index.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "echo 'NO TESTS!!!'",
+    "format": "prettier-standard index.js",
+    "start": "npm run test",
+    "precommit": "npm test",
+    "pretest": "npm run format"
+  },
+  "author": "tiaanduplessis <tiaanduplessis@hotmail.com>",
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "prettier-standard": "^6.0.0"
+  },
+  "dependencies": {
+    "command-exists": "^1.2.2",
+    "get-them-args": "^1.3.1",
+    "shell-exec": "^1.0.0"
+  }
+}

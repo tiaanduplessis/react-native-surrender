@@ -71,8 +71,8 @@ $ surrender
 
 Is equivalent to running 
 
-``
-`watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && npm install && npm cache clean --force
+```
+watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && npm install && npm cache clean --force
 ```
 
 in the current directory.

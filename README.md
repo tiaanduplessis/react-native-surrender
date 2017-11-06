@@ -74,7 +74,7 @@ Is equivalent to running `watchman watch-del-all && rm -rf $TMPDIR/react-* && rm
 Optionally you can use `yarn` as the packager:
 
 ```sh
-$ surrender --yarn # watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && yarn install && yarn cache clean
+$ surrender --yarn # watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && yarn && yarn cache clean
 ```
 
 Run `gradlew clean` in the android directory:

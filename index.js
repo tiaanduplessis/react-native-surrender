@@ -13,12 +13,17 @@ async function commandsExist () {
     await commandExists('watchman')
     console.log('watchman exists ✔')
 
-    if (args.yarn) {
-      await commandExists('yarn')
-      console.log('yarn exists ✔')
+    if (args.pnpm) {
+      await commandExists('pnpm')
+      console.log('pnpm exists ✔')
     } else {
-      await commandExists('npm')
-      console.log('npm exists ✔')
+      if (args.yarn) {
+        await commandExists('yarn')
+        console.log('yarn exists ✔')
+      } else {
+        await commandExists('npm')
+        console.log('npm exists ✔')
+      }
     }
 
     if (args.pods) {
@@ -34,16 +39,24 @@ commandsExist()
   .then(runCommand)
   .catch(console.error)
 
-function runCommand () {
-  const packager = args.yarn ? 'yarn' : 'npm'
-  const reset = `watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && ${packager} install`
+function getCommand (packager) {
+  const reset = `watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules`
+  const install = `&& ${packager}${args.yarn ? '' : ' install'}`
   const cleanCache = `&& ${packager} cache clean${args.yarn ? '' : ' --force'}`
   const start = args.start ? `&& ${packager} start --reset-cache` : ''
   const pods = args.pods
     ? `&& cd ios & rm -rf Pods Podfile.lock & pod install & cd ..`
     : ''
   const android = args.android ? '&& cd android & gradlew clean & cd ..' : ''
-  const cmd = `${reset} ${cleanCache} ${pods} ${android} ${start}`
+  const cmd = `${reset} ${install} ${cleanCache} ${pods} ${android} ${start}`
+  return cmd
+}
+
+function runCommand () {
+  let packager = 'npm'
+  if (args.pnpm) packager = 'pnpm'
+  else if (args.yarn) packager = 'yarn'
+  const cmd = getCommand(packager)
   console.log(`Running command: ${cmd}`)
   return sh(cmd).catch(console.error)
 }

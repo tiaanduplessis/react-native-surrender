@@ -69,12 +69,22 @@ $ yarn global add react-native-surrender
 $ surrender
 ```
 
-Is equivalent to running `watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && npm install && npm cache clean --force` in the current directory.
+Is equivalent to running 
 
-Optionally you can use `yarn` as the packager:
+``
+`watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && npm install && npm cache clean --force
+```
+
+in the current directory.
+
+Optionally you can use `yarn` or `pnpm` as the packager:
 
 ```sh
 $ surrender --yarn # watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && yarn && yarn cache clean
+```
+
+```sh
+$ surrender --pnpm # watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && pnpm install && pnpm cache clean
 ```
 
 Run `gradlew clean` in the android directory:

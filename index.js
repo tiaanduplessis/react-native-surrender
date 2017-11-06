@@ -18,7 +18,7 @@ async function commandsExist () {
       console.log('yarn exists ✔')
     } else {
       await commandExists('npm')
-      console.log('yarn exists ✔')
+      console.log('npm exists ✔')
     }
 
     if (args.pods) {

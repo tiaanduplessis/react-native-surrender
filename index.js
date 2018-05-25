@@ -16,14 +16,12 @@ async function commandsExist () {
     if (args.pnpm) {
       await commandExists('pnpm')
       console.log('pnpm exists ✔')
+    } else if (args.yarn) {
+      await commandExists('yarn')
+      console.log('yarn exists ✔')
     } else {
-      if (args.yarn) {
-        await commandExists('yarn')
-        console.log('yarn exists ✔')
-      } else {
-        await commandExists('npm')
-        console.log('npm exists ✔')
-      }
+      await commandExists('npm')
+      console.log('npm exists ✔')
     }
 
     if (args.pods) {
@@ -40,9 +38,10 @@ commandsExist()
   .catch(console.error)
 
 function getCommand (packager) {
+  const isYarn = packager === 'yarn'
   const reset = `watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules`
-  const install = `&& ${packager}${args.yarn ? '' : ' install'}`
-  const cleanCache = `&& ${packager} cache clean${args.yarn ? '' : ' --force'}`
+  const install = `&& ${packager}${isYarn ? '' : ' install'}`
+  const cleanCache = `&& ${packager} cache clean${isYarn ? '' : ' --force'}`
   const start = args.start ? `&& ${packager} start --reset-cache` : ''
   const pods = args.pods
     ? `&& cd ios & rm -rf Pods Podfile.lock & pod install & cd ..`
@@ -54,8 +53,15 @@ function getCommand (packager) {
 
 function runCommand () {
   let packager = 'npm'
-  if (args.pnpm) packager = 'pnpm'
-  else if (args.yarn) packager = 'yarn'
+
+  if (args.pnpm) {
+    packager = 'pnpm'
+  }
+
+  if (args.yarn) {
+    packager = 'yarn'
+  }
+
   const cmd = getCommand(packager)
   console.log(`Running command: ${cmd}`)
   return sh(cmd).catch(console.error)

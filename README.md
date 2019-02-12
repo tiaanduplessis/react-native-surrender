@@ -1,7 +1,7 @@
 
 <h1 align="center">react-native-surrender</h1>
 <div align="center">
-  <strong>CLI script that clears Watchman, removes node_modules and cleans cache using npm or yarn</strong>
+  <strong>CLI script that clears Watchman, removes node_modules and cleans cache and other goodies</strong>
 </div>
 <br>
 <div align="center">
@@ -26,23 +26,11 @@
   <a href="http://makeapullrequest.com">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="make a pull request" />
   </a>
-</div>
-<br>
-<div align="center">
-  <a href="https://github.com/tiaanduplessis/react-native-surrender/watchers">
-    <img src="https://img.shields.io/github/watchers/tiaanduplessis/react-native-surrender.svg?style=social" alt="Github Watch Badge" />
-  </a>
-  <a href="https://github.com/tiaanduplessis/react-native-surrender/stargazers">
-    <img src="https://img.shields.io/github/stars/tiaanduplessis/react-native-surrender.svg?style=social" alt="Github Star Badge" />
-  </a>
-  <a href="https://twitter.com/intent/tweet?text=Check%20out%20react-native-surrender!%20https://github.com/tiaanduplessis/react-native-surrender%20%F0%9F%91%8D">
-    <img src="https://img.shields.io/twitter/url/https/github.com/tiaanduplessis/react-native-surrender.svg?style=social" alt="Tweet" />
+  <a href="https://greenkeeper.io/">
+    <img src="https://badges.greenkeeper.io/tiaanduplessis/react-native-surrender.svg)" alt="Greenkeeper badge" />
   </a>
 </div>
 <br>
-<div align="center">
-  Built with ❤︎ by <a href="https://github.com/tiaanduplessis">tiaanduplessis</a> and <a href="https://github.com/tiaanduplessis/react-native-surrender/contributors">contributors</a>
-</div>
 
 <h2>Table of Contents</h2>
 <details>
@@ -55,7 +43,7 @@
 
 ## Install
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/tiaanduplessis/react-native-surrender.svg)](https://greenkeeper.io/)
+
 
 ```sh
 $ npm install -g react-native-surrender
@@ -80,29 +68,29 @@ in the current directory.
 Optionally you can use `yarn` or `pnpm` as the packager:
 
 ```sh
-$ surrender --yarn # watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && yarn && yarn cache clean
+$ surrender --yarn
 ```
 
 ```sh
-$ surrender --pnpm # watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && pnpm install && pnpm cache clean
+$ surrender --pnpm 
 ```
 
-Run `gradlew clean` in the android directory:
+Run `gradlew clean` and remove build files in the android directory:
 
 ```sh
-$ surrender --android # watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && npm install && npm cache clean --force && cd android & gradlew clean & cd .. 
+$ surrender --android
 ```
 
 Or start the packager
 
 ```sh
-$ surrender --start # watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && npm install && npm cache clean --force  && npm start --reset-cache
+$ surrender --start
 ```
 
 Or clear and install pods
 
 ```sh
-$ surrender --pods #  watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && npm install && npm cache clean --force && cd ios & rm -rf Pods Podfile.lock & pod install & cd ..
+$ surrender --pods
 ```
 
 ## Contributing
